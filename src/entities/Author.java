@@ -2,27 +2,24 @@ package entities;
 
 import java.time.LocalDate;
 import java.util.Objects;
+import java.util.UUID;
 
 public class Author {
-    private Integer id;
+    private UUID id;
     private String name;
     private LocalDate birth;
 
     public Author() {
     }
 
-    public Author(Integer id, String name, LocalDate birth) {
-        this.id = id;
+    public Author(String name, LocalDate birth) {
+        this.id = UUID.randomUUID();
         this.name = name;
         this.birth = birth;
     }
 
-    public Integer getId() {
+    public UUID getId() {
         return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getName() {

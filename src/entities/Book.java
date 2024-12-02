@@ -2,9 +2,10 @@ package entities;
 
 import java.time.LocalDate;
 import java.util.Objects;
+import java.util.UUID;
 
 public class Book {
-    private Integer id;
+    private UUID id;
     private String title;
     private Author author;
     private Boolean available;
@@ -13,8 +14,8 @@ public class Book {
 
     public Book(){}
 
-    public Book(Integer id, String title, Author author, Boolean available, LocalDate dateRegister, LocalDate dateUpdate) {
-        this.id = id;
+    public Book(String title, Author author, Boolean available, LocalDate dateRegister, LocalDate dateUpdate) {
+        this.id = UUID.randomUUID();
         this.title = title;
         this.author = author;
         this.available = available;
@@ -22,12 +23,8 @@ public class Book {
         this.dateUpdate = dateUpdate;
     }
 
-    public Integer getId() {
+    public UUID getId() {
         return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public LocalDate getDateUpdate() {
