@@ -50,4 +50,12 @@ public class Author {
     public int hashCode() {
         return Objects.hash(name, birth);
     }
+
+    @Override
+    public String toString() {
+        return "Author{" +
+                "name='" + name + '\'' +
+                ", birth=" + birth +
+                '}';
+    }
 }
