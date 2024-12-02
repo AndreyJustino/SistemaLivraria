@@ -53,7 +53,7 @@ public class Main {
             System.out.println("O que deseja fazer: " +
                     "\nAdicionar um novo Livro? [1]" +
                     "\nListar todos os livros? [2]" +
-                    "\nRealizar empréstimo de um livro? [3]" +
+                    "\nSolicitar empréstimo de um livro? [3]" +
                     "\nEncerrar sistema? [0]");
 
             int option = sc.nextInt();
@@ -117,6 +117,7 @@ public class Main {
                         book = new Book(title, new Author(nameAuthor, birth), true, LocalDate.now(), LocalDate.now());
                         ListBook.setBookList(book);
                         library.setBooks(ListBook.getBookList());
+                        System.out.println("Livro cadastrado com sucesso!");
                     }else{
                         System.out.println("Livro ja cadastrado!");
                     }
@@ -131,18 +132,52 @@ public class Main {
 
                         System.out.println("--------------------------------------------------------------");
 
-                        System.out.println(
-                                "ID: " + value.getId() + ", \n" +
-                                        "Titulo: " + value.getTitle() + ", \n" +
-                                        "Autor: " + value.getAuthor().getName() + ", \n" +
-                                        "Disponivel: " + value.getAvailable());
+                        if (value.getAvailable()){
+
+                            System.out.println(
+                                    "ID: " + value.getId() + ", \n" +
+                                            "Titulo: " + value.getTitle() + ", \n" +
+                                            "Autor: " + value.getAuthor().getName() + ", \n" +
+                                            "Disponivel: " + value.getAvailable());
+
+                        }
+
                     }
 
                     System.out.println("--------------------------------------------------------------");
 
                     break;
                 case 3:
-                    //...
+
+                    System.out.println("Realizar emprestimo de livro");
+
+                    System.out.print("Qual o ID do livro que você deseja?: ");
+                    String id = sc.next();
+
+                    sc.nextLine();
+
+                    System.out.print("Confirme o titulo do livro em questão: ");
+                    String titleBook = sc.nextLine();
+
+                    boolean resultFindBook = false;
+                    for (Book value : ListBook.getBookList()){
+                        if (value.getId().toString().equals(id) && Objects.equals(value.getTitle(), titleBook)){
+                            value.setAvailable(false);
+                            resultFindBook = true;
+                            value.setDateUpdate(LocalDate.now());
+                            break;
+                        }
+                    }
+
+                    if (!resultFindBook){
+                        System.out.println("Livro não encontrado");
+                        break;
+                    }
+
+                    System.out.println("Emprestimo realizado com sucesso");
+
+                    System.out.println("--------------------------------------------------------------");
+
                     break;
                 case 0:
                     answer = 'N';
@@ -150,15 +185,6 @@ public class Main {
                 default:
                     throw new IllegalStateException("Unexpected value: " + option);
             }
-
-            /*
-            System.out.print("Qual o ID do livro que você deseja?: ");
-            int id = sc.nextInt();
-
-            System.out.print("Confirme o nome do livro em questão: ");
-            String name = sc.nextLine();
-
-            */
 
             if (answer == 'N'){
                 break;
