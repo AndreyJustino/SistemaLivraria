@@ -43,16 +43,28 @@ public class Main {
         char answer = 'S';
 
         while (answer == 'S'){
-            System.out.print("Gostaria de ver os livros disponiveis?");
-            answer = sc.next().toUpperCase().charAt(0);
 
-            /*Local que vai fica a renderização do livro*/
+            for (Book value : ListBook.getBookList()){
+
+                System.out.println("--------------------------------------------------------------");
+
+                System.out.println(
+                        "ID: " + value.getId() + ", \n" +
+                        "Titulo: " + value.getTitle() + ", \n" +
+                        "Autor: " + value.getAuthor().getName() + ", \n" +
+                        "Disponivel: " + value.getAvailable());
+            }
+
+            System.out.println("--------------------------------------------------------------");
 
             System.out.print("Qual o ID do livro que você deseja?: ");
             int id = sc.nextInt();
 
             System.out.print("Confirme o nome do livro em questão: ");
             String name = sc.nextLine();
+
+            System.out.print("Gostaria de ver os livros disponiveis?");
+            answer = sc.next().toUpperCase().charAt(0);
 
         }
 

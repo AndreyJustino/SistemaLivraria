@@ -27,28 +27,12 @@ public class Book {
         return id;
     }
 
-    public LocalDate getDateUpdate() {
-        return dateUpdate;
+    public String getTitle() {
+        return title;
     }
 
-    public void setDateUpdate(LocalDate dateUpdate) {
-        this.dateUpdate = dateUpdate;
-    }
-
-    public LocalDate getDateRegister() {
-        return dateRegister;
-    }
-
-    public void setDateRegister(LocalDate dateRegister) {
-        this.dateRegister = dateRegister;
-    }
-
-    public Boolean getAvailable() {
-        return available;
-    }
-
-    public void setAvailable(Boolean available) {
-        this.available = available;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public Author getAuthor() {
@@ -59,12 +43,28 @@ public class Book {
         this.author = author;
     }
 
-    public String getTitle() {
-        return title;
+    public Boolean getAvailable() {
+        return available;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setAvailable(Boolean available) {
+        this.available = available;
+    }
+
+    public LocalDate getDateRegister() {
+        return dateRegister;
+    }
+
+    public void setDateRegister(LocalDate dateRegister) {
+        this.dateRegister = dateRegister;
+    }
+
+    public LocalDate getDateUpdate() {
+        return dateUpdate;
+    }
+
+    public void setDateUpdate(LocalDate dateUpdate) {
+        this.dateUpdate = dateUpdate;
     }
 
     @Override

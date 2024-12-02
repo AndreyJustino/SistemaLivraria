@@ -7,7 +7,7 @@ import java.util.List;
 
 public class ListBook {
 
-    static List<Book> bookList = new ArrayList<>();
+    private static final List<Book> bookList = new ArrayList<>();
 
     public static void setBookList(Book book){
         bookList.add(book);
