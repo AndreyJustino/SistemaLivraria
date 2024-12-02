@@ -161,7 +161,7 @@ public class Main {
 
                     boolean resultFindBook = false;
                     for (Book value : ListBook.getBookList()){
-                        if (value.getId().toString().equals(id) && Objects.equals(value.getTitle(), titleBook)){
+                        if (value.getId().toString().equals(id) && Objects.equals(value.getTitle(), titleBook) && value.getAvailable()){
                             value.setAvailable(false);
                             resultFindBook = true;
                             value.setDateUpdate(LocalDate.now());
@@ -170,7 +170,7 @@ public class Main {
                     }
 
                     if (!resultFindBook){
-                        System.out.println("Livro não encontrado");
+                        System.out.println("Livro não encontrado ou não disponivel");
                         break;
                     }
 
