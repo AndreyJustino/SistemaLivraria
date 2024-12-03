@@ -13,17 +13,21 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
+        ListAuthor listAuthor = new ListAuthor();
+        ListLend listLend = new ListLend();
+        ListBook listBook = new ListBook();
+
         Author autor1 = new Author("J.K. Rowling", LocalDate.of(1965, 7, 31));
         Author autor2 = new Author("George R.R. Martin", LocalDate.of(1948, 9, 20));
         Author autor3 = new Author("J.R.R. Tolkien", LocalDate.of(1892, 1, 3));
         Author autor4 = new Author("Agatha Christie", LocalDate.of(1890, 9, 15));
         Author autor5 = new Author("Stephen King", LocalDate.of(1947, 9, 21));
 
-        ListAuthor.setAuthorList(autor1);
-        ListAuthor.setAuthorList(autor2);
-        ListAuthor.setAuthorList(autor3);
-        ListAuthor.setAuthorList(autor4);
-        ListAuthor.setAuthorList(autor5);
+        listAuthor.setAuthorList(autor1);
+        listAuthor.setAuthorList(autor2);
+        listAuthor.setAuthorList(autor3);
+        listAuthor.setAuthorList(autor4);
+        listAuthor.setAuthorList(autor5);
 
         Book livro1 = new Book("Harry Potter e a Pedra Filosofal", autor1, true,
                 LocalDate.of(2024, 11, 1), LocalDate.of(2024, 12, 2));
@@ -36,13 +40,13 @@ public class Main {
         Book livro5 = new Book("O Iluminado", autor5, true,
                 LocalDate.of(2024, 11, 5), LocalDate.of(2024, 12, 2));
 
-        ListBook.setBookList(livro1);
-        ListBook.setBookList(livro2);
-        ListBook.setBookList(livro3);
-        ListBook.setBookList(livro4);
-        ListBook.setBookList(livro5);
+        listBook.setBookList(livro1);
+        listBook.setBookList(livro2);
+        listBook.setBookList(livro3);
+        listBook.setBookList(livro4);
+        listBook.setBookList(livro5);
 
-        Library library = new Library(ListBook.getBookList(), ListAuthor.getAuthorList(), ListLend.getLendList());
+        Library library = new Library(listBook.getBookList(), listAuthor.getAuthorList(), listLend.getLendList());
 
         Scanner sc = new Scanner(System.in);
 
@@ -90,8 +94,8 @@ public class Main {
 
                     if (!resultName && !resultBirth){
                         author = new Author(nameAuthor, birth);
-                        ListAuthor.setAuthorList(author);
-                        library.setAuthors(ListAuthor.getAuthorList());
+                        listAuthor.setAuthorList(author);
+                        library.setAuthors(listAuthor.getAuthorList());
                     }
 
                     System.out.println("--------------------------------------------------------------");
@@ -115,8 +119,8 @@ public class Main {
 
                     if(!resultTitle){
                         book = new Book(title, new Author(nameAuthor, birth), true, LocalDate.now(), LocalDate.now());
-                        ListBook.setBookList(book);
-                        library.setBooks(ListBook.getBookList());
+                        listBook.setBookList(book);
+                        library.setBooks(listBook.getBookList());
                         System.out.println("Livro cadastrado com sucesso!");
                     }else{
                         System.out.println("Livro ja cadastrado!");
@@ -128,7 +132,7 @@ public class Main {
                 case 2:
 
                     System.out.println("Livros disponiveis:");
-                    for (Book value : ListBook.getBookList()){
+                    for (Book value : listBook.getBookList()){
 
                         System.out.println("--------------------------------------------------------------");
 
@@ -160,7 +164,7 @@ public class Main {
                     String titleBook = sc.nextLine();
 
                     boolean resultFindBook = false;
-                    for (Book value : ListBook.getBookList()){
+                    for (Book value : listBook.getBookList()){
                         if (value.getId().toString().equals(id) && Objects.equals(value.getTitle(), titleBook) && value.getAvailable()){
                             value.setAvailable(false);
                             resultFindBook = true;

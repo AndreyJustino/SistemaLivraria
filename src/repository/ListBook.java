@@ -7,13 +7,13 @@ import java.util.List;
 
 public class ListBook {
 
-    private static final List<Book> bookList = new ArrayList<>();
+    private final List<Book> bookList = new ArrayList<>();
 
-    public static void setBookList(Book book){
+    public void setBookList(Book book){
         bookList.add(book);
     }
 
-    public static List<Book> getBookList(){
+    public List<Book> getBookList(){
         return bookList;
     }
 
